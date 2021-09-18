@@ -1,0 +1,133 @@
+@startuml northwind-simple
+
+skinparam linetype ortho
+hide methods
+
+entity Order
+entity OrderDetails
+entity Supplier
+entity Product
+
+Order ||-l-|{ OrderDetails
+Product ||-o{ OrderDetails
+Supplier ||-|{ Product
+@enduml
+
+
+
+@startuml northwind-attributes
+
+skinparam linetype ortho
+hide methods
+
+entity Order {
+    * order_number
+    order_date
+    required_date
+    shipped_date
+    freight
+    ship_name
+    ship_address
+    ship_city
+    ship_region
+    ship_postal_code
+    ship_country
+}
+
+entity OrderDetails {
+    unit_price
+    quantity
+    discount
+}
+
+entity Supplier {
+    * company_name
+    contact_name
+    contact_title
+    address
+    city
+    region
+    postal_code
+    country
+    phone
+    fax
+    homepage
+}
+entity Product {
+    * product_name
+    quantity_per_unit
+    unit_price
+    units_in_stock
+    units_on_order
+    reorder_level
+    discontinued
+}
+
+Order ||-l-|{ OrderDetails
+Product ||-o{ OrderDetails
+Supplier ||-|{ Product
+@enduml
+
+
+
+@startuml northwind-full
+
+skinparam linetype ortho
+hide methods
+
+entity Order {
+    * order_id
+    + customer_id
+    + employee_id
+    + ship_via
+    order_date
+    required_date
+    shipped_date
+    freight
+    ship_name
+    ship_address
+    ship_city
+    ship_region
+    ship_postal_code
+    ship_country
+}
+
+entity OrderDetails {
+    * order_id
+    * product_id
+    unit_price
+    quantity
+    discount
+}
+
+entity Supplier {
+    * supplier_id
+    company_name
+    contact_name
+    contact_title
+    address
+    city
+    region
+    postal_code
+    country
+    phone
+    fax
+    homepage
+}
+entity Product {
+    * product_id
+    product_name
+    + supplier_id
+    + category_id
+    quantity_per_unit
+    unit_price
+    units_in_stock
+    units_on_order
+    reorder_level
+    discontinued
+}
+
+Order ||-l-|{ OrderDetails
+Product ||-o{ OrderDetails
+Supplier ||-|{ Product
+@enduml
